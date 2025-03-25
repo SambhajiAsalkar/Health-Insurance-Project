@@ -1,0 +1,3 @@
+2024-12-30T16:01:31.687+05:30  INFO 2484 --- [JRTP-LoggingProject] [main] c.nt.JrtpLoggingProjectApplicationTests  : Starting JrtpLoggingProjectApplicationTests using Java 20.0.2 with PID 2484 (started by SAMBHAJI in F:\JRTP-Programs\JRTP-LoggingProject)
+2024-12-30T16:01:31.727+05:30  INFO 2484 --- [JRTP-LoggingProject] [main] c.nt.JrtpLoggingProjectApplicationTests  : No active profile set, falling back to 1 default profile: "default"
+2024-12-30T16:01:34.365+05:30  INFO 2484 --- [JRTP-LoggingProject] [main] c.nt.JrtpLoggingProjectApplicationTests  : Started JrtpLoggingProjectApplicationTests in 3.294 seconds (process running for 5.645)

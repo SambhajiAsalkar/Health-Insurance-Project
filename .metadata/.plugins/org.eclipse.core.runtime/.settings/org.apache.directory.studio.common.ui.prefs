@@ -1,0 +1,17 @@
+addColor=50,205,50
+attributeTypeColor=238,130,238
+commentColor=46,139,87
+defaultColor=255,255,255
+deleteColor=255,69,0
+disabledColor=192,192,192
+eclipse.preferences.version=1
+errorColor=255,69,0
+keyword1Color=192,192,192
+keyword2Color=201,105,30
+modifyColor=218,165,32
+objectClassColor=50,205,50
+oidColor=255,99,71
+overriddenByCSS=,defaultColor,disabledColor,errorColor,commentColor,keyword1Color,keyword2Color,objectClassColor,attributeTypeColor,oidColor,separatorColor,valueColor,addColor,deleteColor,modifyColor,renameColor,
+renameColor=30,144,255
+separatorColor=255,99,71
+valueColor=135,206,250

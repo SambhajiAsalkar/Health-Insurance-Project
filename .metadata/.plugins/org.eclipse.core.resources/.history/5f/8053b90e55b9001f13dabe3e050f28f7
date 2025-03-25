@@ -1,0 +1,5 @@
+package com.nt.commons;
+
+public class AppConfigProperties {
+
+}

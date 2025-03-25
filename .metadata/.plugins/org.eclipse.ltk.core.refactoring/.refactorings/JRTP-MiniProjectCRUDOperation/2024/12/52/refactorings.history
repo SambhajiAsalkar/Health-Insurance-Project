@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move package &apos;com.nt.model&apos; to &apos;JRTP-MiniProject02-ReportAPI/src/main/java/com.nt&apos;&#x0D;&#x0A;- Original project: &apos;JRTP-MiniProjectCRUDOperation&apos;&#x0D;&#x0A;- Destination element: &apos;JRTP-MiniProject02-ReportAPI/src/main/java/com.nt&apos;&#x0D;&#x0A;- Original element: &apos;JRTP-MiniProjectCRUDOperation/src/main/java/com.nt.model&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move package" destination="=JRTP-MiniProject02-ReportAPI/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.nt" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.nt.model" flags="589830" fragments="1" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.movePackages" stamp="1735044818624" version="1.0"/>
+</session>

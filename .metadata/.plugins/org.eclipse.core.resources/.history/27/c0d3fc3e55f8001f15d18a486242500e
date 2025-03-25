@@ -1,0 +1,15 @@
+package com.sa.binding;
+
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+
+public class KidsDetails {
+private Long caseNum;
+private String name;
+private Integer age;
+private Long ssn;
+}

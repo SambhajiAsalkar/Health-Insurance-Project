@@ -1,0 +1,76 @@
+package com.nt.controller;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.nt.Entity.TravelPlan;
+import com.nt.service.TravelPlaneMgmtServiceIMPL;
+
+@RestController
+@RequestMapping("/travelplan/api")
+public class TravelPlaneOperationController {
+ @Autowired
+ private TravelPlaneMgmtServiceIMPL service;
+
+ @PostMapping("/register")
+ private ResponseEntity<String> registerTravelPlan(@RequestBody TravelPlan plan)
+ {
+	 try {
+	 String msg=service.registerTravelPlane(plan);
+	 return new ResponseEntity<String>(msg,HttpStatus.CREATED);
+	 }
+	 catch(Exception e) 
+	 {
+		 e.printStackTrace();
+		 return new ResponseEntity<String>(e.getMessage(),HttpStatus.OK);
+	 }
+ }
+ 
+ @GetMapping("/categories")
+ private ResponseEntity<?> showTravelCategory()
+ {
+	 try {
+		Map<Integer, String> travelsCategory = service.getTravelsCategory();
+		return new ResponseEntity<Map<Integer,String>>(travelsCategory, HttpStatus.OK);
+	} catch (Exception e) {
+		e.printStackTrace();
+		return new ResponseEntity<String>(e.getMessage(),HttpStatus.OK);
+	}
+ }
+ 
+ @GetMapping("/all")
+ private ResponseEntity<?> showAllPlans()
+ {
+	 try {
+		List<TravelPlan> list = service.showAllPlans();
+		return new ResponseEntity<List<TravelPlan>>(list,HttpStatus.OK);
+	} catch (Exception e) {
+		e.printStackTrace();
+		return new ResponseEntity<String>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+ }
+ 
+ @GetMapping("/get/{id}")
+ private ResponseEntity<?> getPlanId(Integer id);
+ {
+	 try {
+		TravelPlan plan= service.showTravelPlanById(id);
+		return new ResponseEntity<TravelPlan>(plan,HttpStatus.OK);
+	} catch (Exception e) {
+		return new ResponseEntity<String>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+ }
+ 
+ 
+}
+

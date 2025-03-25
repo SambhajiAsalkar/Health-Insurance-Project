@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 0 elements to &apos;CO_API/src/main/java/com.sa.Entity&apos;&#x0D;&#x0A;- Destination element: &apos;CO_API/src/main/java/com.sa.Entity&apos;" description="Copy compilation units" destination="=CO_API/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.sa.Entity" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1741944500071" units="0" version="1.0"/>
+</session>

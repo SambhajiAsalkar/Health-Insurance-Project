@@ -1,0 +1,24 @@
+package com.nt.Entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="Travel_Plan")
+public class TravelPlan {
+	
+	@Id
+	@Column(name="plan_id")
+	private Integer plan_id;
+	@Column(name="plan_name")
+	private String plan_name;
+	@Column(name="plan_description")
+	private String plan_description;
+	@Column (name="plan_min_budget")
+	private Float plan_min_budget;
+	@Column (name="plane_category_id")
+	private Integer plane_category_id;
+
+}

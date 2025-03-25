@@ -1,0 +1,17 @@
+package com.nt.commons;
+
+import java.util.Map;
+
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
+
+import lombok.Data;
+
+@Configuration()
+@Data
+@Component
+@ConfigurationProperties(prefix="plan.module")
+public class AppConfigProperties {
+Map<String,String> messages;
+}

@@ -1,0 +1,17 @@
+package com.nt.Entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="plan_category")
+public class PlanCategory {
+	@Id
+	@SequenceGenerator=(name="gen1",sequenceName="category_seq",initialValue=1,allocationSize=1)
+	@GeneratedValue(generator = "gen1",strategy=GenerationType.SEQUENCE)
+	private Integer categoryId;
+}

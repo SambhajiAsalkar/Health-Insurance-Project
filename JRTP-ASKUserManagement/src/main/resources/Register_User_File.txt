@@ -1,0 +1,5 @@
+Hi ${Full-Name}</br>
+this is your temporary password: ${Pass}</br>
+ <a href="${URL}">click here to change it</a></br>
+Thank You,</br>
+Admin</br>

@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: JRTP-MiniProject-03-UserMgmt-AshokSir's
+  datasource: 
+   driver-class-name: oracle.jdbc.driver.OracleDriver
+   url: jdbc:oracle:thin:@localhost:1521:orcl
+   
+   username: mydb6pm
+   password: sam
+ 
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: sambhajiasalkar850@gmail.com
+    password: rphy zzqp xrmx ynwb
+    properties:
+      mail:
+       transport:
+          protocol: smtp
+       smtp:
+        auth: true
+        starttls:
+         enable: true
+  jpa: 
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.OracleDialect
+    show-sql: true
+server:
+ port: 4042
+
+user: 
+   module: 
+      messages: 
+         save-success: "save success"
+         save-failure: "save failed"
+         login-success: "logged in successfully"
+         login-failure: "login failed.....!"
+         delete-success: "delete success"
+         delete-failure: "delete failed"
+         status-changed: "status changed"
+         status-Unchanged: "status failed"
+         activation-success: "activation success"
+         activation-failure: "activation failed"
+         pass-recover-success: "Password has been sent to your mail"
+         pass-recover-failure: "password recovery failed"
+         
+     

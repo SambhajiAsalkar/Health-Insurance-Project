@@ -1,0 +1,58 @@
+package com.nt.service;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.nt.Entity.PlanCategory;
+import com.nt.Entity.TravelPlan;
+import com.nt.repository.IPlanCategory;
+import com.nt.repository.ITravalPlan;
+
+public class TravelPlaneMgmtServiceIMPL implements ITravelPlaveMgmtService
+{
+	@Autowired
+	private IPlanCategory planRepo;
+	
+	@Autowired
+	private ITravalPlan travelRepo;
+	
+	
+@Override
+public Map<Integer, String> getTravelsCategory() 
+ {
+	List<PlanCategory> list=planRepo.findAll();
+	Map<Integer,String> categoriesMap=new HashMap<Integer,String>();
+	list.forEach(category->{
+		       categoriesMap.put(category.getCategoryId(),category.getCategoryName())
+	          }
+		);
+		
+	return null;
+}
+@Override
+	public String registerTravelPlane(TravelPlan plan) 
+{
+		    travelRepo.save(plan);
+		return "travel plane registered with id"+ plan.getPlan_id();
+	}
+@Override
+public List<TravelPlan> showAllPlans() 
+{
+	return travelRepo.findAll();
+}
+
+@Override
+public TravelPlan showTravelPlanById(Integer id) 
+{	
+	return travelRepo.findById(id).orElseThrow(()->new IllegalArgumentException("Travel Plan not found"));	
+}
+@Override
+public String updateTravelPlan(TravelPlan plane) 
+{
+					// TODO Auto-generated method stub
+					return null;
+				}
+}

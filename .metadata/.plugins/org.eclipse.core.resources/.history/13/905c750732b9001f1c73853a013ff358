@@ -1,0 +1,9 @@
+package com.nt.service;
+
+import com.nt.Entity.TravelPlan;
+
+public interface ITravelPlaveMgmtService {
+	
+	public String registerTravelPlane(TravelPlan travelplane);
+	public Entity showAllPlaneByid(int id);
+}

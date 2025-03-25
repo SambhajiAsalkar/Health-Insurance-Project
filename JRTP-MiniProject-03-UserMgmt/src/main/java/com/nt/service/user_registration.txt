@@ -1,0 +1,7 @@
+hi {Full-name},<br>
+Your user account registration process is completed.<br>
+please find temporary password below <br>
+<b>Temporary Password :: {PWD}.</b><br>
+<a href="{URL}"> Click here to unlock your Account </a><br>
+<i>Thanks ,</i><br>
+<i>Admin </i>

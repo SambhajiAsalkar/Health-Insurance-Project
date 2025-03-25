@@ -1,0 +1,30 @@
+server:
+  port: 4041
+spring:
+  application:
+    name: JRTP-MiniProjectCRUDOperation
+  datasource:
+    driverClassName: org.h2.Driver
+    password: mydb6pm
+    url: jdbc:h2:mem:testdb
+    username: sam
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    
+plan: 
+  module:
+    messages:
+      save-success: Travel is saved with id value
+      save-failure: Travel plan is not saved with value
+      find-by-id-failure: Travel Plan not found
+      update-success: Travel plan Updated successfully
+      update-failure: Travel plan updation failed
+      delete-success: Travel plan deleted successfully
+      delete-failure: Travel plan deletion failed
+      status-change-success: Travel plan status has been changed successfully
+      status-change-failure: Travel plan is not found with status change
+logging:
+   level:
+      com:
+         nt: info

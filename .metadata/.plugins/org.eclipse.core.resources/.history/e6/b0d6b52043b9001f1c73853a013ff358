@@ -1,0 +1,87 @@
+package com.nt.service;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.nt.Entity.PlanCategory;
+import com.nt.Entity.TravelPlan;
+import com.nt.repository.IPlanCategory;
+import com.nt.repository.ITravalPlan;
+@Component
+public class TravelPlaneMgmtServiceIMPL implements ITravelPlaveMgmtService
+{
+	@Autowired
+	private IPlanCategory planRepo;
+	
+	@Autowired
+	private ITravalPlan travelRepo;
+	
+	
+@Override
+public Map<Integer, String> getTravelsCategory() 
+ {
+	List<PlanCategory> list=planRepo.findAll();
+	Map<Integer,String> categoriesMap=new HashMap<Integer,String>();
+	list.forEach(category->{
+		       categoriesMap.put(category.getCategoryId(),category.getCategoryName());
+	          }
+		);
+		
+	return categoriesMap;
+}
+@Override
+	public String registerTravelPlane(TravelPlan plan) 
+{
+		    travelRepo.save(plan);
+		return "travel plane registered with id"+ plan.getPlan_id();
+	}
+@Override
+public List<TravelPlan> showAllPlans() 
+{
+	return travelRepo.findAll();
+}
+
+@Override
+public TravelPlan showTravelPlanById(Integer id) 
+{	
+	return travelRepo.findById(id).orElseThrow(()->new IllegalArgumentException("Travel Plan not found"));	
+}
+@Override
+public String updateTravelPlan(TravelPlan plane) 
+{               
+	Optional<TravelPlan> opt = travelRepo.findById(plane.getPlane_category_id());
+	if(opt.isPresent()) {
+		return "record is updated with id value"+ plane.getPlane_category_id();
+	}
+	else
+		return "Record not found";
+				}
+@Override
+public String deletTravelPlan(Integer id) {
+	Optional<TravelPlan> opt = travelRepo.findById(id);
+	if(opt.isPresent()) 
+	{
+		travelRepo.deleteById(id);
+		return "record is deleted";
+	}
+	else
+		return "record not found for deletion";
+}
+@Override
+public String changeTravelPlanStatus(Integer id, String staus) {
+	Optional<TravelPlan> opt = travelRepo.findById(id);
+	TravelPlan plan=new TravelPlan();
+	if(opt.isPresent()) 
+	{
+		plan.setActive_sw(staus);
+		return "status updated successfully ";
+	}
+	else
+		return "Record not present";
+}
+}

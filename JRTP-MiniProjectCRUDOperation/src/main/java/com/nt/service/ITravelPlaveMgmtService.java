@@ -1,0 +1,17 @@
+package com.nt.service;
+
+import java.util.List;
+import java.util.Map;
+
+import com.nt.Entity.TravelPlan;
+
+public interface ITravelPlaveMgmtService {
+	
+	public String registerTravelPlane(TravelPlan plane);
+	public List<TravelPlan> showAllPlans();
+	public Map<Integer,String> getTravelsCategory();
+	public TravelPlan showTravelPlanById(Integer id);
+	public String updateTravelPlan(TravelPlan plane);
+	public String deletTravelPlan(Integer id);
+	public String changeTravelPlanStatus(Integer id,String staus);
+}

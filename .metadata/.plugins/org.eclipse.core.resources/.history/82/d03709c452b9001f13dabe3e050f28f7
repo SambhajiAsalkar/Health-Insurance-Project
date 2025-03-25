@@ -1,0 +1,9 @@
+spring.application.name=JRTP-MiniProjectCRUDOperation
+server.port=4041
+
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sam
+spring.datasource.password=mydb6pm
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.jpa.show-sql=true

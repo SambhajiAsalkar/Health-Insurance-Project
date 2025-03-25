@@ -1,0 +1,13 @@
+server:
+  port: 4041
+spring:
+  application:
+    name: JRTP-MiniProjectCRUDOperation
+  datasource:
+    driverClassName: org.h2.Driver
+    password: mydb6pm
+    url: jdbc:h2:mem:testdb
+    username: sam
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
