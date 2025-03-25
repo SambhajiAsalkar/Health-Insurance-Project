@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: AR_API
+  datasource:
+    url: jdbc:mysql://localhost:3306/his_project
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update  # options: none, update, create, create-drop
+    show-sql: true
+server:
+  port: 4042
+ar:
+ ssa-web:
+    url: http://localhost:9090/ssa-web-api/find/{ssn}
+ state: New Jersey
