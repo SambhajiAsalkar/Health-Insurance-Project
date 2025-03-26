@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.sa.Entity.CitizenAppEntity;
 import com.sa.Entity.Co_TriggerEntity;
@@ -26,6 +27,7 @@ import com.sa.repository.DC_IncomeRepo;
 import com.sa.repository.EligeRepository;
 import com.sa.repository.PlanRepo;
 
+@Service
 public class EligeDetailsServiceImpl implements IEligeDetails{
 
 	@Autowired
@@ -48,6 +50,7 @@ public class EligeDetailsServiceImpl implements IEligeDetails{
 	@Autowired
 	
 	private CO_TriggerRepo trgRepo;
+	
 	@Override
 	public EligeResponse determineEligibilityByCaseNumber(Long caseNum) 
 	{

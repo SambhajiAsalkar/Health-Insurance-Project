@@ -1,0 +1,29 @@
+plan:
+  module:
+    messages:
+      delete_failure: '"plan must not be a empty"'
+      delete_success: '"plan deleted successfully"'
+      save_failure: '"plan must not be a empty"'
+      save_success: '"plan saved successfully"'
+      status_change_failure: '"plan not found"'
+      status_change_success: '"plan status changed successfully"'
+      update_failure: '"plan not found with given id "'
+      update_success: '"plan updated successfully"'
+spring:
+  application:
+    name: ED_API
+  datasource:
+    url: jdbc:mysql://localhost:3306/his_project
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update  # options: none, update, create, create-drop
+    show-sql: true
+server:
+  port: 4041
+
+
+

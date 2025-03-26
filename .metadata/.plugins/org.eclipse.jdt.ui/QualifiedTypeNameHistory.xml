@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
-    <fullyQualifiedTypeName name="org.springframework.web.reactive.function.client.WebClient"/>
-    <fullyQualifiedTypeName name="com.sa.service.ICustomerService"/>
-    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.GeneratedValue"/>
     <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="java.util.Set"/>
@@ -20,7 +15,6 @@
     <fullyQualifiedTypeName name="com.sa.entity.DC_ChildrenEntity"/>
     <fullyQualifiedTypeName name="com.sa.binding.KidsDetails"/>
     <fullyQualifiedTypeName name="com.sa.binding.IncomeDetails"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
     <fullyQualifiedTypeName name="com.sa.binding.CreateCaseResponse"/>
     <fullyQualifiedTypeName name="java.util.Map"/>
     <fullyQualifiedTypeName name="org.springframework.http.HttpStatusCode"/>
@@ -34,8 +28,6 @@
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ExceptionHandler"/>
     <fullyQualifiedTypeName name="org.springframework.http.ResponseEntity"/>
     <fullyQualifiedTypeName name="org.springframework.http.HttpStatus"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
     <fullyQualifiedTypeName name="com.sa.entity.CitizenAppEntity"/>
     <fullyQualifiedTypeName name="com.sa.entity.DcCaseEntity"/>
     <fullyQualifiedTypeName name="jakarta.persistence.Table"/>
@@ -44,7 +36,6 @@
     <fullyQualifiedTypeName name="com.sa.Entity.DC_IncomeEntity"/>
     <fullyQualifiedTypeName name="com.sa.repository.DC_IncomeRepo"/>
     <fullyQualifiedTypeName name="java.time.Period"/>
-    <fullyQualifiedTypeName name="com.sa.binding.EligeResponse"/>
     <fullyQualifiedTypeName name="com.sa.repository.DC_ChildrenRepo"/>
     <fullyQualifiedTypeName name="com.sa.Entity.DC_ChildrenEntity"/>
     <fullyQualifiedTypeName name="com.sa.repository.DC_EducationRepo"/>
@@ -60,4 +51,13 @@
     <fullyQualifiedTypeName name="com.sa.Entity.CitizenAppEntity"/>
     <fullyQualifiedTypeName name="java.io.FileOutputStream"/>
     <fullyQualifiedTypeName name="java.io.File"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
+    <fullyQualifiedTypeName name="com.sa.service.EligeDetailsServiceImpl"/>
+    <fullyQualifiedTypeName name="com.sa.binding.EligeResponse"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="org.springframework.boot.autoconfigure.SpringBootApplication"/>
+    <fullyQualifiedTypeName name="org.springframework.boot.SpringApplication"/>
 </qualifiedTypeNameHistroy>
