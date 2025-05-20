@@ -61,7 +61,7 @@ public class EligeDetailsServiceImpl implements IEligeDetails{
 		Integer planId=null;
 		
 		Optional<DcCaseEntity> opt = caseRepo.findById(caseNum);
-		if(opt.isEmpty()) 
+		if(opt.isPresent()) 
 		{
 			   planId = opt.get().getPlanId();
 		}
@@ -108,7 +108,7 @@ public class EligeDetailsServiceImpl implements IEligeDetails{
 		DC_IncomeEntity income = incomeRepo.findByCaseNumber(caseNum);
 		 Double empIncome = income.getEmpIncome();
 		
-		 if("SNAP".equals(planName)) 
+		 if("SNAP".equalsIgnoreCase(planName)) 
 		  {
 			if(empIncome<=300) 
 			{
@@ -120,7 +120,7 @@ public class EligeDetailsServiceImpl implements IEligeDetails{
 			    response.setDenielReason("Citizen having high income");
 			  }
 			}
-		else if("CCAP".equals(planName)) 
+		else if("CCAP".equalsIgnoreCase(planName)) 
 		 {
 			List<DC_ChildrenEntity> childs = childRepo.findByCaseNum(caseNum);
 			int size = childs.size();
@@ -137,7 +137,7 @@ public class EligeDetailsServiceImpl implements IEligeDetails{
 			  }
 		    }  
 		 }
-		else if("Medicare".equals(planName))
+		else if("Medicare".equalsIgnoreCase(planName))
 		{
 			if(age>65) 
 			{
@@ -146,10 +146,10 @@ public class EligeDetailsServiceImpl implements IEligeDetails{
 			else
 			  {
 				 response.setPlanStatus("Deniend");
-			     response.setDenielReason("");
+			     response.setDenielReason("Age not Suitable");
 			  }	
 		}
-		else if("Medicaid".equals(planName)) 
+		else if("Medicaid".equalsIgnoreCase(planName)) 
 		{
 			Double propertyIncome = income.getPropertyIncome();
 			if(empIncome<=300 && propertyIncome==0) 
@@ -162,7 +162,7 @@ public class EligeDetailsServiceImpl implements IEligeDetails{
 			     response.setDenielReason("High Income");
 			  }
 		}
-		else if("NJW".equals(planName))
+		else if("NJW".equalsIgnoreCase(planName))
 		{
 			DC_EducationEntity byCaseNum = eduRepo.findByCaseNum(caseNum);
 			Integer graduationYear = byCaseNum.getGraduationYear();
@@ -178,7 +178,7 @@ public class EligeDetailsServiceImpl implements IEligeDetails{
 			}
 		}
 		 //setting dummy data
-		if(response.getPlanStatus().equals("Aproved")) {
+		if(response.getPlanStatus().equalsIgnoreCase("Aproved")) {
 		 response.setStartDate(LocalDate.now());
 		 response.setEndDate(LocalDate.now().plusMonths(6));
 		 response.setBenifitAmt(350.00);

@@ -1,0 +1,20 @@
+spring:
+  batch:
+    job:
+      enabled: true  # Enable Spring Batch jobs
+    jdbc:
+      initialize-schema: always  # Initialize Spring Batch tables
+  
+  application:
+    name: BI_API
+
+
+server:
+  port: 4046
+
+csv:
+  file:
+    path: "F:/spring/csv.txt"
+    
+    
+  

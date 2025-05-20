@@ -1,18 +1,11 @@
 spring:
   application:
     name: CO_API
-  datasource: 
-   driver-class-name: com.mysql.cj.jdbc.Driver
-   url: jdbc:mysql://localhost:3306/jrtp701db
-   
-   username: root
-   password: root
- 
   mail:
     host: smtp.gmail.com
     port: 587
     username: sambhajiasalkar850@gmail.com
-    password: rphy zzqp xrmx ynwb
+    password: pvhf qxwz bnme jahg
     properties:
       mail:
        transport:
@@ -21,16 +14,12 @@ spring:
         auth: true
         starttls:
          enable: true
-  jpa: 
-    hibernate:
-      ddl-auto: update
-    database-platform: org.hibernate.dialect.MySQL8Dialect
-    show-sql: true
+  
+  config: 
+     import:  optional:configserver:http://localhost:8888
+  
+  
 server:
- port: 4044
+ port: 3000
  
-mailbody:
- registeruser:
-    location: src/main/java/com/nt/service/user_registration.txt
- recoverpass:
-    location: src/main/java/com/nt/service/recover_password.txt
+  

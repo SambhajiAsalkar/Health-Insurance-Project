@@ -1,0 +1,17 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: Config_Server
+  cloud:
+    config:
+      server:
+        bootstrap: false
+        git:
+          clone-on-start: true
+          skip-ssl-validation: true
+          uri: https://github.com/SambhajiAsalkar/Health-Insurance-Config
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

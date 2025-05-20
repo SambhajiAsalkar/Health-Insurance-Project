@@ -1,16 +1,19 @@
 package com.sa.service;
 
 import java.awt.Color;
-import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.ExecutorCompletionService;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+import org.springframework.stereotype.Service;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.Font;
@@ -31,7 +34,7 @@ import com.sa.repository.CitizenAppRepo;
 import com.sa.repository.DC_CaseRepo;
 import com.sa.repository.EligeRepository;
 import com.sa.utils.EmailUtils;
-
+@Service
 public class Co_ServiceImpl implements Co_Service{
 
 	@Autowired
@@ -50,43 +53,88 @@ public class Co_ServiceImpl implements Co_Service{
 
     @Autowired
    private Environment env;
+    
+    Long failed=0l;
+	  Long success=0l;
+	  
 	@Override
 	public CO_Response processPendingTrgs() {
-
-		CitizenAppEntity appEntity=null;
-		List<Co_TriggerEntity> trgList = trgRepo.findByTrgStatus("pending");
-		for(Co_TriggerEntity entity:trgList) 
-		{
-			Long caseNum  = entity.getCaseNum();
-			//get Eligibility  data based on caseNum
-			  Elige_DetailsEntity eligEntity = eligRepo.findByCaseNum(caseNum);
-				//get citizen data based on caseNum
-			  Optional<DcCaseEntity> opt = caseRepo.findById(caseNum);
-			  if(opt.isPresent()) 
-			  {
-				  DcCaseEntity caseEntity = opt.get();
-				  Optional<CitizenAppEntity> opt2 = appRepo.findById(caseEntity.getAppId());
-			       if(opt2.isPresent()) 
-			       {
-			    	    appEntity = opt2.get();
-			    	   
-			       }
-			       
-			  }
-			//generate pdf with eligibility details and send pdf to citizen mail
-			  generatePdf(eligEntity,appEntity);
-				//store pdf to citizen mail
-			  
-			  
-			}
-		return null;
-		
-		
 		
 		  
+		  CO_Response response=new CO_Response();
+		
+		List<Co_TriggerEntity> trgList = trgRepo.findByTrgStatus("pending");
+		
+		
+		response.setTotalTrg(Long.valueOf(trgList.size()));
+		
+	//single threaded logic
+		/*
+		for(Co_TriggerEntity entity:trgList) 
+		{
+		 try {
+			processTrigger(response, entity);
+				success++;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			failed ++;
+		}
+		}*/
+		
+	//multithreading logic
+		
+		ExecutorService executor=Executors.newFixedThreadPool(10);
+		ExecutorCompletionService<Object> pool=new ExecutorCompletionService<>(executor);
+		
+		
+		for(Co_TriggerEntity entity:trgList) 
+		{
+			pool.submit(() ->{				
+					try {
+						processTrigger(response, entity);
+							success++;
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+						     failed ++;
+				}
+					return null;
+			});
+		 
+		}
+		response.setFailedTrg(failed);
+		response.setSuccessTrg(success);
+		return response;
+	  
 		}
 
-	private void generatePdf(Elige_DetailsEntity elig,CitizenAppEntity citizenEntity)
+	private CitizenAppEntity processTrigger(CO_Response response,Co_TriggerEntity entity) throws Exception
+	{
+		CitizenAppEntity appEntity=null;
+		
+		//get Eligibility  data based on caseNum
+		  Elige_DetailsEntity eligEntity = eligRepo.findByCaseNum(entity.getCaseNum());
+			//get citizen data based on caseNum
+		  Optional<DcCaseEntity> opt = caseRepo.findById(entity.getCaseNum());
+		  if(opt.isPresent()) 
+		  {
+			  DcCaseEntity caseEntity = opt.get();
+			  Integer appId=caseEntity.getAppId();
+			  Optional<CitizenAppEntity> opt2 = appRepo.findById(appId);
+		       if(opt2.isPresent()) 
+		       {
+		    	    appEntity = opt2.get();
+		       }
+		       
+		  }  
+		  
+		//generate pdf with eligibility details and send pdf to citizen mail
+		  generatePdf(eligEntity,appEntity);
+			//store pdf to citizen mail
+		return appEntity;
+	}
+	private void generatePdf(Elige_DetailsEntity elig,CitizenAppEntity citizenEntity)throws Exception
 	{
         Document document=new Document(PageSize.A4);
         File file=new File(elig.getCaseNum()+".pdf");
@@ -157,18 +205,22 @@ public class Co_ServiceImpl implements Co_Service{
        document.close();
        String sub="HIS Eligibility Info";
        String body="HIS Eligibility Info";
-       try {
-		emailUtils.sendEmailMessage(citizenEntity.getEmail(),sub,body, file);
-	} catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+      
+    emailUtils.sendEmailMessage(citizenEntity.getEmail(),sub,body, file);
+	 updateTrigger(elig.getCaseNum(),file); 
 	}
-	       	
+	   
+	 private void updateTrigger(Long caseNum,File file)throws Exception{
+  	   Co_TriggerEntity coEntity=trgRepo.findByCaseNum(caseNum);
+       byte[] arr=new byte[(byte)file.length()];
+       FileInputStream fis=new FileInputStream(file);
+       fis.read(arr);
+       coEntity.setTrgStatus("Completed");
+       trgRepo.save(coEntity);
+     fis.close();
+     }
+      
 	}
 	
-	
-    
-  
-}
 
 
